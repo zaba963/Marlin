@@ -133,7 +133,7 @@
 
 // This defines the number of extruders
 // :[1, 2, 3, 4, 5]
-#define EXTRUDERS 2
+#define EXTRUDERS 1
 
 // For Cyclops or any "multi-extruder" that shares a single nozzle.
 //#define SINGLENOZZLE
@@ -190,8 +190,8 @@
 // Offset of the extruders (uncomment if using more than one and relying on firmware to position when changing).
 // The offset has to be X=0, Y=0 for the extruder 0 hotend (default extruder).
 // For the other hotends it is their distance from the extruder 0 hotend.
-#define HOTEND_OFFSET_X {0.0, 16.00} // (in mm) for each extruder, offset of the hotend on the X axis
-#define HOTEND_OFFSET_Y {0.0, 0.00}  // (in mm) for each extruder, offset of the hotend on the Y axis
+#define HOTEND_OFFSET_X {0.0} // (in mm) for each extruder, offset of the hotend on the X axis
+#define HOTEND_OFFSET_Y {0.0}  // (in mm) for each extruder, offset of the hotend on the Y axis
 
 // @section machine
 
@@ -265,7 +265,7 @@
  * :{ '0': "Not used", '1':"100k / 4.7k - EPCOS", '2':"200k / 4.7k - ATC Semitec 204GT-2", '3':"Mendel-parts / 4.7k", '4':"10k !! do not use for a hotend. Bad resolution at high temp. !!", '5':"100K / 4.7k - ATC Semitec 104GT-2 (Used in ParCan & J-Head)", '6':"100k / 4.7k EPCOS - Not as accurate as Table 1", '7':"100k / 4.7k Honeywell 135-104LAG-J01", '8':"100k / 4.7k 0603 SMD Vishay NTCS0603E3104FXT", '9':"100k / 4.7k GE Sensing AL03006-58.2K-97-G1", '10':"100k / 4.7k RS 198-961", '11':"100k / 4.7k beta 3950 1%", '12':"100k / 4.7k 0603 SMD Vishay NTCS0603E3104FXT (calibrated for Makibox hot bed)", '13':"100k Hisens 3950  1% up to 300°C for hotend 'Simple ONE ' & hotend 'All In ONE'", '20':"PT100 (Ultimainboard V2.x)", '51':"100k / 1k - EPCOS", '52':"200k / 1k - ATC Semitec 204GT-2", '55':"100k / 1k - ATC Semitec 104GT-2 (Used in ParCan & J-Head)", '60':"100k Maker's Tool Works Kapton Bed Thermistor beta=3950", '66':"Dyze Design 4.7M High Temperature thermistor", '70':"the 100K thermistor found in the bq Hephestos 2", '71':"100k / 4.7k Honeywell 135-104LAF-J01", '147':"Pt100 / 4.7k", '1047':"Pt1000 / 4.7k", '110':"Pt100 / 1k (non-standard)", '1010':"Pt1000 / 1k (non standard)", '-3':"Thermocouple + MAX31855 (only for sensor 0)", '-2':"Thermocouple + MAX6675 (only for sensor 0)", '-1':"Thermocouple + AD595",'998':"Dummy 1", '999':"Dummy 2" }
  */
 #define TEMP_SENSOR_0 5
-#define TEMP_SENSOR_1 5
+#define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
 #define TEMP_SENSOR_4 0
@@ -485,7 +485,7 @@
   #define DELTA_DIAGONAL_ROD 600.0 // mm
 
   // height from z=0 to home position
-  #define DELTA_HEIGHT 900.00 // get this value from auto calibrate
+  #define DELTA_HEIGHT 780.00 // get this value from auto calibrate
 
   #define DELTA_ENDSTOP_ADJ { 0.0, 0.0, 0.0 } // get these from auto calibrate
 
@@ -524,22 +524,22 @@
 
 #if DISABLED(ENDSTOPPULLUPS)
   // fine endstop settings: Individual pullups. will be ignored if ENDSTOPPULLUPS is defined
-  #define ENDSTOPPULLUP_XMAX
-  #define ENDSTOPPULLUP_YMAX
-  #define ENDSTOPPULLUP_ZMAX
+  //#define ENDSTOPPULLUP_XMAX
+  //#define ENDSTOPPULLUP_YMAX
+  //#define ENDSTOPPULLUP_ZMAX
   //#define ENDSTOPPULLUP_XMIN
   //#define ENDSTOPPULLUP_YMIN
-  #define ENDSTOPPULLUP_ZMIN
+  //#define ENDSTOPPULLUP_ZMIN
   //#define ENDSTOPPULLUP_ZMIN_PROBE
 #endif
 
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
-#define X_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
-#define Y_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
+#define X_MIN_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
+#define Y_MIN_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
 #define Z_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
-#define X_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
-#define Y_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
-#define Z_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
+#define X_MAX_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
+#define Y_MAX_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
+#define Z_MAX_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
 #define Z_MIN_PROBE_ENDSTOP_INVERTING false // set to true to invert the logic of the probe.
 
 // Enable this feature if all enabled endstop pins are interrupt-capable.
@@ -553,7 +553,7 @@
 
 // variables to calculate steps
 #define XYZ_FULL_STEPS_PER_ROTATION 200
-#define XYZ_MICROSTEPS 32
+#define XYZ_MICROSTEPS 16
 #define XYZ_BELT_PITCH 2
 #define XYZ_PULLEY_TEETH 16
 
@@ -868,8 +868,8 @@
 #define Z_CLEARANCE_BETWEEN_PROBES 10 // Z Clearance between probe points
 
 // For M851 give a range for adjusting the Z probe offset
-#define Z_PROBE_OFFSET_RANGE_MIN -20
-#define Z_PROBE_OFFSET_RANGE_MAX 20
+#define Z_PROBE_OFFSET_RANGE_MIN -40
+#define Z_PROBE_OFFSET_RANGE_MAX 40
 
 // Enable the M48 repeatability test to test probe accuracy
 #define Z_MIN_PROBE_REPEATABILITY_TEST
@@ -947,7 +947,7 @@
  * For other boards you may need to define FIL_RUNOUT_PIN.
  * By default the firmware assumes HIGH = has filament, LOW = ran out
  */
-#define FILAMENT_RUNOUT_SENSOR
+//#define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
   #define FIL_RUNOUT_INVERTING false // set to true to invert the logic of the sensor.
   #define ENDSTOPPULLUP_FIL_RUNOUT // Uncomment to use internal pullup for filament runout pins if the sensor is defined.
@@ -1145,7 +1145,8 @@
 #endif
 
 // Delta only homes to Z
-#define HOMING_FEEDRATE_Z  (60*60)
+//#define HOMING_FEEDRATE_Z  (60*60)
+#define HOMING_FEEDRATE_Z  10000
 
 //=============================================================================
 //============================= Additional Features ===========================
@@ -1328,7 +1329,7 @@
  *
  * :{ 'en':'English', 'an':'Aragonese', 'bg':'Bulgarian', 'ca':'Catalan', 'cn':'Chinese', 'cz':'Czech', 'cz_utf8':'Czech (UTF8)', 'de':'German', 'el':'Greek', 'el-gr':'Greek (Greece)', 'es':'Spanish', 'eu':'Basque-Euskera', 'fi':'Finnish', 'fr':'French', 'gl':'Galician', 'hr':'Croatian', 'it':'Italian', 'kana':'Japanese', 'kana_utf8':'Japanese (UTF8)', 'nl':'Dutch', 'pl':'Polish', 'pt':'Portuguese', 'pt-br':'Portuguese (Brazilian)', 'pt-br_utf8':'Portuguese (Brazilian UTF8)', 'pt_utf8':'Portuguese (UTF8)', 'ru':'Russian', 'tr':'Turkish', 'uk':'Ukrainian', 'zh_CN':'Chinese (Simplified)', 'zh_TW':'Chinese (Taiwan)', test':'TEST' }
  */
-#define LCD_LANGUAGE en
+//#define LCD_LANGUAGE en
 
 /**
  * LCD Character Set
@@ -1352,7 +1353,7 @@
  *
  * :['JAPANESE', 'WESTERN', 'CYRILLIC']
  */
-#define DISPLAY_CHARSET_HD44780 JAPANESE
+//#define DISPLAY_CHARSET_HD44780 JAPANESE
 
 /**
  * LCD TYPE
@@ -1365,7 +1366,7 @@
  *            https://github.com/olikraus/U8glib_Arduino
  */
 //#define ULTRA_LCD   // Character based
-#define DOGLCD      // Full graphics display
+//#define DOGLCD      // Full graphics display
 
 /**
  * SD CARD
@@ -1374,7 +1375,7 @@
  * you must uncomment the following option or it won't work.
  *
  */
-#define SDSUPPORT
+//#define SDSUPPORT
 
 /**
  * SD CARD: SPI SPEED
@@ -1382,7 +1383,7 @@
  * Enable one of the following items for a slower SPI transfer speed.
  * This may be required to resolve "volume init" errors.
  */
-#define SPI_SPEED SPI_HALF_SPEED
+//#define SPI_SPEED SPI_HALF_SPEED
 //#define SPI_SPEED SPI_QUARTER_SPEED
 //#define SPI_SPEED SPI_EIGHTH_SPEED
 
@@ -1391,7 +1392,7 @@
  *
  * Use CRC checks and retries on the SD communication.
  */
-#define SD_CHECK_AND_RETRY
+//#define SD_CHECK_AND_RETRY
 
 //
 // ENCODER SETTINGS
@@ -1422,7 +1423,7 @@
 //
 //  Set this option if CLOCKWISE causes values to DECREASE
 //
-#define REVERSE_ENCODER_DIRECTION
+//#define REVERSE_ENCODER_DIRECTION
 
 //
 // This option reverses the encoder direction for navigating LCD menus.
@@ -1430,7 +1431,7 @@
 //  If CLOCKWISE normally moves DOWN this makes it go UP.
 //  If CLOCKWISE normally moves UP this makes it go DOWN.
 //
-#define REVERSE_MENU_DIRECTION
+//#define REVERSE_MENU_DIRECTION
 
 //
 // Individual Axis Homing
@@ -1454,8 +1455,8 @@
 // Note: Test audio output with the G-Code:
 //  M300 S<frequency Hz> P<duration ms>
 //
-#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 100
-#define LCD_FEEDBACK_FREQUENCY_HZ 1000
+//#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 100
+//#define LCD_FEEDBACK_FREQUENCY_HZ 1000
 
 //
 // CONTROLLER TYPE: Standard
@@ -1526,7 +1527,7 @@
 // RepRapDiscount FULL GRAPHIC Smart Controller
 // http://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
 //
-#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+//#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
 
 //
 // MakerLab Mini Panel with graphic
@@ -1635,10 +1636,10 @@
 // SAV OLEd LCD module support using either SSD1306 or SH1106 based LCD modules
 //
 //#define SAV_3DGLCD
-#if ENABLED(SAV_3DGLCD)
+//#if ENABLED(SAV_3DGLCD)
   //#define U8GLIB_SSD1306
-  #define U8GLIB_SH1106
-#endif
+  //#define U8GLIB_SH1106
+//#endif
 
 //
 // CONTROLLER TYPE: Shift register panels
